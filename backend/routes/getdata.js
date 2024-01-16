@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router;
+const router = express.Router();
 const DataModel = require('../models/data');
+router.use(express.json())
 
-router.length('/data', async(req,res) =>{
+router.get('/data', async(req,res) =>{
     try{
         const data = await DataModel.find()
         res.json(data)

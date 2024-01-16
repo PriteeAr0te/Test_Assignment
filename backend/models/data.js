@@ -55,5 +55,5 @@ const dataSchema = new Schema ({
         type: Number,
     }
 }) 
-const DataModel = mongoose.model('data', dataSchema)
+const DataModel = mongoose.model('dashboard', dataSchema)
 module.exports = DataModel;

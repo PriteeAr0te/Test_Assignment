@@ -10,7 +10,6 @@ const Likelihood = ({ dimension }) => {
         // JSON data
         const jsonData = data;
 
-        // Assume you have a getTopLikelihoods function that returns an array of likelihoods based on the specified dimension
         function getTopLikelihoods(data, limit, dimension) {
             const sortedData = data.slice().sort((a, b) => {
                 if (dimension === 'start_year' || dimension === 'region') {
@@ -42,7 +41,7 @@ const Likelihood = ({ dimension }) => {
 
         const svg = d3.select(svgRef.current);
 
-        svg.selectAll("*").remove(); // Clear previous content
+        svg.selectAll("*").remove(); 
 
         svg
             .attr("width", width + margin.left + margin.right)

@@ -12,7 +12,6 @@ const EndYear = () => {
     // useEffect logic
     if (selectedEndYear) {
       console.log(`Selected End Year: ${selectedEndYear}`);
-      // You can perform additional logic here based on the selectedEndYear
     }
   }, [selectedEndYear]);
 

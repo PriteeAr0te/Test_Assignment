@@ -11,7 +11,6 @@ const Countries = () => {
     // useEffect logic
     if (selectedCountry) {
       console.log(`Selected Country: ${selectedCountry}`);
-      // You can perform additional logic here based on the selectedCountry
     }
   }, [selectedCountry]);
 

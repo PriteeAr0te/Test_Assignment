@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import dataContext from '../Context/Data/dataContext';
 
-// ... (previous imports and code)
-
 const CombinedLikelihood = ({ dimensions }) => {
     const { data } = useContext(dataContext);
     const svgRef = useRef();
@@ -17,7 +15,6 @@ const CombinedLikelihood = ({ dimensions }) => {
             return title.length > maxLength ? `${title.substr(0, maxLength)}...` : title;
         }
 
-        // Assume you have a getTopCombined function that returns an array of combined dimensions
         function getTopCombined(data, limit, dimensions) {
             const sortedData = data.slice().sort((a, b) => {
                 for (const dimension of dimensions) {
@@ -61,7 +58,7 @@ const CombinedLikelihood = ({ dimensions }) => {
 
         const svg = d3.select(svgRef.current);
 
-        svg.selectAll("*").remove(); // Clear previous content
+        svg.selectAll("*").remove(); 
 
         svg
             .attr("width", width + margin.left + margin.right)

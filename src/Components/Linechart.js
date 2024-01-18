@@ -10,7 +10,6 @@ const LineChart = () => {
         // JSON data
         const jsonData = data;
 
-        // Assume you have a getTopSectors function that returns an array of sectors with intensities
         function getTopSectors(data, limit) {
             const sectorIntensities = {};
             data.forEach((item) => {
@@ -51,7 +50,7 @@ const LineChart = () => {
 
         const svg = d3.select(svgRef.current);
 
-        svg.selectAll("*").remove(); // Clear previous content
+        svg.selectAll("*").remove(); 
 
         svg
             .attr("width", width + margin.left + margin.right)
@@ -72,8 +71,6 @@ const LineChart = () => {
             .select("g")
             .append("g")
             .call(d3.axisLeft(scaleY));
-
-        // ... (rest of the code)
 
 
         const line = d3.line()

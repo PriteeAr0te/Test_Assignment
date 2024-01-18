@@ -5,7 +5,7 @@ const cors = require('cors');
 const apiRoutes = require('./routes/getdata');
 const app = express();
 
-app.use(cors()); // Fix: Add parentheses to use the middleware
+app.use(cors()); 
 app.use(express.json());
 connectToMongo();
 

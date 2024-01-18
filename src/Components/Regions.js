@@ -11,7 +11,6 @@ const Regions = () => {
     // useEffect logic
     if (selectedRegion) {
       console.log(`Selected Region: ${selectedRegion}`);
-      // You can perform additional logic here based on the selectedRegion
     }
   }, [selectedRegion]);
 

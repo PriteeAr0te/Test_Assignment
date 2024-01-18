@@ -55,7 +55,7 @@ const Barchart = () => {
 
         const svg = d3.select(svgRef.current);
 
-        svg.selectAll("*").remove(); // Clear previous content
+        svg.selectAll("*").remove(); 
 
         svg
             .attr("width", width + margin.left + margin.right)

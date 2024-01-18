@@ -11,7 +11,6 @@ const Sectors = () => {
     // useEffect logic
     if (selectedSector) {
       console.log(`Selected Sector: ${selectedSector}`);
-      // You can perform additional logic here based on the selectedSector
     }
   }, [selectedSector]);
 

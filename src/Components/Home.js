@@ -18,7 +18,6 @@ const Home = () => {
   console.log("Data:", data);
   
   if (!data || data.length === 0) {
-    // Handle the case when data is not yet available
     return <div>Loading...</div>;
   }
 

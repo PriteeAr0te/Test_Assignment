@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import dataContext from "./dataContext";
 
 const useDataState = () => {
-    const host = "http://localhost:5000";
+    const BASE_URL = "https://datavisualization-backend1852.onrender.com";
     const dataInitial = [];
     const [data, setData] = useState(dataInitial);
 
     const getData = async () => {
         try {
-            const response = await fetch(`${host}/api/getdata/data`, {
+            const response = await fetch(`${BASE_URL}/api/getdata/data`, {
                 method: "GET"
             });
             const json = await response.json();

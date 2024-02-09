@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
-import dataContext from '../Context/Data/dataContext';
-import * as d3 from 'd3';
+import React, { useContext, useState, useEffect } from "react";
+import dataContext from "../Context/Data/dataContext";
+import * as d3 from "d3";
 
 const Sectors = () => {
   const { data } = useContext(dataContext);
 
-  const [selectedSector, setSelectedSector] = useState('');
+  const [selectedSector, setSelectedSector] = useState("");
 
   useEffect(() => {
     // useEffect logic
@@ -27,13 +27,13 @@ const Sectors = () => {
     .filter((sector) => sector !== "")
     .slice(0, 10);
 
-
   const handleSectorChange = (sector) => {
     setSelectedSector(sector);
   };
 
   useEffect(() => {
     if (selectedSector) {
+      // eslint-disable-next-line
       renderBarChart(selectedSector);
     }
   }, [selectedSector]);
@@ -43,7 +43,10 @@ const Sectors = () => {
     const filteredData = data.filter((item) => item.sector === selectedSector);
 
     // Prepare data for the bar chart
-    const chartData = filteredData.map((item) => ({ region: item.region, intensity: item.intensity }));
+    const chartData = filteredData.map((item) => ({
+      region: item.region,
+      intensity: item.intensity,
+    }));
 
     // Clear existing chart if any
     d3.select("#bar-chart-container").selectAll("*").remove();
@@ -63,8 +66,15 @@ const Sectors = () => {
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Create the scales
-    const xScale = d3.scaleBand().domain(chartData.map((d) => d.region)).range([0, width - margin.left - margin.right]).padding(0.1);
-    const yScale = d3.scaleLinear().domain([0, d3.max(chartData, (d) => d.intensity)]).range([height - margin.top - margin.bottom, 0]);
+    const xScale = d3
+      .scaleBand()
+      .domain(chartData.map((d) => d.region))
+      .range([0, width - margin.left - margin.right])
+      .padding(0.1);
+    const yScale = d3
+      .scaleLinear()
+      .domain([0, d3.max(chartData, (d) => d.intensity)])
+      .range([height - margin.top - margin.bottom, 0]);
 
     // Create the bars
     svg
@@ -77,22 +87,34 @@ const Sectors = () => {
       .attr("x", (d) => xScale(d.region))
       .attr("width", xScale.bandwidth())
       .attr("y", (d) => yScale(d.intensity))
-      .attr("height", (d) => height - margin.top - margin.bottom - yScale(d.intensity));
+      .attr(
+        "height",
+        (d) => height - margin.top - margin.bottom - yScale(d.intensity)
+      );
 
     svg
       .append("g")
-      .attr("transform", `translate(0,${height - margin.top - margin.bottom + 10})`)
-      .call(d3.axisBottom(xScale).tickFormat((d) => (d === "" || typeof d === "undefined" ? "Unknown Label" : d)))
+      .attr(
+        "transform",
+        `translate(0,${height - margin.top - margin.bottom + 10})`
+      )
+      .call(
+        d3
+          .axisBottom(xScale)
+          .tickFormat((d) =>
+            d === "" || typeof d === "undefined" ? "Unknown Label" : d
+          )
+      )
       .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
       .attr("transform", "rotate(-45)")
-      .style("fill", "#e9edc9"); 
+      .style("fill", "#e9edc9");
 
     // Style the x-axis line
     svg
-      .select(".domain") 
+      .select(".domain")
       .style("stroke-width", "4px")
       .style("stroke", "#bc6c25");
 
@@ -102,7 +124,8 @@ const Sectors = () => {
       .style("stroke-width", "4px")
       .style("stroke", "#bc6c25");
 
-    svg.append("g")
+    svg
+      .append("g")
       .attr("transform", `translate(0,0)`)
       .call(d3.axisLeft(yScale))
       .selectAll("path, line")
@@ -114,20 +137,22 @@ const Sectors = () => {
   return (
     <div className="mb-3">
       <form>
-        <h2 className="mt-5" style={{ color: '#bc6c25' }}>
-          <h2><label className="form-label">Select Sector:</label></h2>
+        <h2 className="mt-5" style={{ color: "#bc6c25" }}>
+          <h2>
+            <label className="form-label">Select Sector:</label>
+          </h2>
         </h2>
         <div
           style={{
-            color: 'black',
-            background: '#dda15e',
-            padding: '20px',
-            borderRadius: '8px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gridGap: '15px',
-            alignItems: 'center',
-            margin: '20px auto',
+            color: "black",
+            background: "#dda15e",
+            padding: "20px",
+            borderRadius: "8px",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridGap: "15px",
+            alignItems: "center",
+            margin: "20px auto",
           }}
         >
           {topSectors.map((sector) => (
@@ -149,8 +174,8 @@ const Sectors = () => {
       </form>
 
       {selectedSector && (
-        <div className='mt-5'>
-          <h3 style={{ color: '#bc6c25' }}>Bar Chart for {selectedSector}</h3>
+        <div className="mt-5">
+          <h3 style={{ color: "#bc6c25" }}>Bar Chart for {selectedSector}</h3>
           <div id="bar-chart-container"></div>
         </div>
       )}

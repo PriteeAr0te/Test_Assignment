@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dataContext from "./dataContext";
 
 const useDataState = () => {
-  const BASE_URL = "https://datavisualization-service18052.onrender.com/";
+  const BASE_URL = "https://datavisualization-service1852.onrender.com";
   const dataInitial = [];
   const [data, setData] = useState(dataInitial);
 

@@ -11,9 +11,6 @@ connectToMongo();
 
 app.use("/api/getdata", require("./routes/getdata"));
 
-app.get("/", (req, res) => {
-  res.send("Hello, this is your backend server!");
-});
 
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
